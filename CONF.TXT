@@ -1,0 +1,77 @@
+// Archivo de configuracion
+idAr: 6
+modo_alarma: 1
+Ts: 600
+
+serv: 172.31.3.161
+mac_: DE.00.00.0D.00.0E
+myip: 172.31.3.166
+dnSe: 172.31.3.1
+gate: 172.31.3.1
+mask: 255.255.255.0
+
+LargoExterno1: 10.00000000
+LargoExterno2: 10.25000000
+LargoExterno3: 10.50000000
+LargoExterno4: 10.75000100
+LargoExterno5: 11.00000000
+
+LargoInterno1: 100.00000000
+LargoInterno2: 110.09999000
+LargoInterno3: 120.12000000
+LargoInterno4: 130.12299000
+LargoInterno5: 140.12340000
+
+umbralAlarmaFuerte1: 1.10000000
+umbralAlarmaFuerte2: 2.20000000
+umbralAlarmaFuerte3: 3.30000000
+umbralAlarmaFuerte4: 4.40000010
+umbralAlarmaFuerte5: 5.50000000
+
+umbralAlarmaSuave1: 6.60000000
+umbralAlarmaSuave2: 7.70000000
+umbralAlarmaSuave3: 8.80000000
+umbralAlarmaSuave4: 9.9000010
+umbralAlarmaSuave5: 11.110000000
+
+factorVelocidad1: 0.63000000
+factorVelocidad2: 0.63000000
+factorVelocidad3: 0.63000000
+factorVelocidad4: 0.63000000
+factorVelocidad5: 0.63000000
+
+idx_1: 32
+idx_2: 32
+idx_3: 32
+idx_4: 32
+idx_5: 32
+
+th1_1: 705
+th2_1: 705
+th3_1: 705
+th4_1: 705
+th5_1: 705
+
+th1_2: 250
+th2_2: 750
+th3_2: 338
+th4_2: 338
+th5_2: 338
+
+th1_3: 250
+th2_3: 750
+th3_3: 338
+th4_3: 338
+th5_3: 338
+
+start_reg_cable_1: 1000
+start_reg_cable_2: 2000
+start_reg_cable_3: 3000
+start_reg_cable_4: 4000
+start_reg_cable_5: 5000
+
+start_reg_cable_fil_1: 6000
+start_reg_cable_fil_2: 7000
+start_reg_cable_fil_3: 8000
+start_reg_cable_fil_4: 9000
+start_reg_cable_fil_5: 10000
