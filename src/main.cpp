@@ -1852,26 +1852,47 @@ void exportarDatosSerial(void){
   
   int sts = dataLog.exportDataSerial();
   Serial.print("Estado de dato exportado: ");Serial.println(sts);
-  if (sts == 0) {
-    #ifdef SERIAL0
-      Serial.println(F(" -> Datos correctamente exportados"));
-    #endif
-    sts = dataLog.removeFile();
-    if (sts == 0){
+  switch(sts){
+    case 0:
       #ifdef SERIAL0
-        Serial.println(F(" -> buffer eliminado"));
+        Serial.println(F(" -> Datos correctamente exportados"));
       #endif
-    }
-    else{
+      sts = dataLog.removeFile();
+      if (sts == 0){
+        #ifdef SERIAL0
+          Serial.println(F(" -> buffer eliminado"));
+        #endif
+      }
+      else{
+        #ifdef SERIAL0
+          Serial.println(F(" -> buffer no se pudo eliminado"));
+        #endif
+      }
+      break;
+
+    case 4:
       #ifdef SERIAL0
-        Serial.println(F(" -> buffer no se pudo eliminado"));
+          Serial.println(F(" -> Archivo para exportar no existente"));
+        #endif
+      break;
+    
+    case 5:
+      #ifdef SERIAL0
+        Serial.println(F(" -> Datos recibidos no coinciden con los leidos en el archivo"));
       #endif
-    }
-  }
-  else{
-    #ifdef SERIAL0
-      Serial.println(F(" -> Datos no exportados. Ocurrio un problema"));
-    #endif
+      break;
+
+    case 7:
+      #ifdef SERIAL0
+        Serial.println(F(" -> Tiempo de espera de exportacion de archivos maximo excedido"));
+      #endif
+      break;
+      
+    default:
+      #ifdef SERIAL0
+        Serial.println(F(" -> Datos no exportados. Ocurrio un problema"));
+      #endif
+      break;
   }
 }
 
@@ -1953,6 +1974,12 @@ void leerCable(uint8_t Ncable) {
     guardarDatosSD(Ncable, N_muestras);
   }
 
+  // Escribimos los datos en Modbus
+  #ifdef SERIAL0
+    Serial.println(F(" -> Escribiendo datos en Modbus . . ."));
+  #endif
+  guardarDatosModbus(Ncable, MAXMUESTRAS);
+  
   // Rutina luego de realizar las N mediciones seguidas
   #ifdef SERIAL0
     Serial.println(F("-> Filtrando datos . . ."));
@@ -1974,9 +2001,8 @@ void leerCable(uint8_t Ncable) {
 
    // Actualizamos los datos por modbus
   #ifdef SERIAL0
-    Serial.println(F(" -> Escribiendo datos en Modbus . . ."));
+    Serial.println(F(" -> Escribiendo datos filtrados en Modbus . . ."));
   #endif
-  guardarDatosModbus(Ncable, MAXMUESTRAS);
   guardarDatosFiltradosModbus(Ncable, MAXMUESTRAS);
 
   #ifdef SERIAL0
